@@ -11,6 +11,6 @@ func InitRouter() {
 	r.POST("/shawnOJ", Login)
 	r.PUT("/shawnOJ", Register)
 	r.PUT("/shawnOJ/email", VerifyEmail)
-	r.GET("/shawnOJ/email", SendEmail)
-	r.Run(":8080")
+	r.POST("/shawnOJ/email", SendEmail)
+	r.Run(":8088")
 }
