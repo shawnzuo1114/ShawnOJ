@@ -137,38 +137,40 @@ export default {
     },
 
     async handleRegister() {
-      try {
-        // 验证码校验接口
-        const verifyForm = new FormData();
-        verifyForm.append('email', this.registerForm.email);
-        verifyForm.append('code', this.registerForm.code);
-        
-        await axios.put('http://127.0.0.1:8088/shawnOJ/email', verifyForm, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-
-        // 注册接口
-        const registerForm = new FormData();
-        registerForm.append('username', this.registerForm.username);
-        registerForm.append('password', this.registerForm.password);
-        registerForm.append('phone', this.registerForm.phone);
-        registerForm.append('email', this.registerForm.email);
-
-        const response = await axios.put('http://127.0.0.1:8088/shawnOJ', registerForm, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-
-        if (response.status === 200) {
-          this.$message.success('注册成功');
-          this.$router.push('/login');
-        }
-        
-      } catch (error) {
-        const errMsg = error.response?.data?.message || '注册流程失败';
+      // 验证码校验接口
+      const verifyForm = new FormData();
+      verifyForm.append('email', this.registerForm.email);
+      verifyForm.append('code', this.registerForm.code);
+      
+      const verifyResponse = await axios.put('http://127.0.0.1:8088/shawnOJ/email', verifyForm, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+      });
+  
+      if (verifyResponse.status !== 200) {
+        const errMsg = verifyResponse.data?.message || '验证码校验失败';
+        return this.$message.error(errMsg);
+      }
+  
+      // 注册接口
+      const registerForm = new FormData();
+      registerForm.append('username', this.registerForm.username);
+      registerForm.append('password', this.registerForm.password);
+      registerForm.append('phone', this.registerForm.phone);
+      registerForm.append('email', this.registerForm.email);
+  
+      const registerResponse = await axios.put('http://127.0.0.1:8088/shawnOJ', registerForm, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+      });
+  
+      if (registerResponse.status === 200) {
+        this.$message.success('注册成功');
+        this.$router.push('/login');
+      } else {
+        const errMsg = registerResponse.data?.message || '注册流程失败';
         this.$message.error(errMsg);
       }
     }
