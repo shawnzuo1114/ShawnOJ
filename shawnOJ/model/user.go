@@ -3,7 +3,7 @@ package model
 import "github.com/dgrijalva/jwt-go"
 
 type MyClaims struct {
-	Username string `json:"username"`
+	Username string `form:"username" json:"username"`
 	jwt.StandardClaims
 }
 

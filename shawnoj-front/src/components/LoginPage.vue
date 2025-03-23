@@ -71,12 +71,11 @@ export default {
         }
       });
 
-      if (response.status === 200) {
-        localStorage.setItem('token', response.data.message);
-        this.$message.success('登录成功');
+      if (response.data.status === 200) {
+        localStorage.setItem('jwtToken', response.data.message);
         this.$router.push('/home');
       } else {
-        this.$message.error(response.data.message || '登录失败');
+        this.$message.error(response.data.message);
       }
     }
   }
