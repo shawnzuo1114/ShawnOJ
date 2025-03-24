@@ -18,6 +18,7 @@ func InitRouter() {
 		UserRouter.Use(midware.JWTAuthMiddleware())
 		UserRouter.POST("/avatar", UploadAvatar)
 		UserRouter.GET("/avatar", GetAvatar)
+		UserRouter.GET("/info", GetUserInfo)
 	}
 	r.Run(":8088")
 }

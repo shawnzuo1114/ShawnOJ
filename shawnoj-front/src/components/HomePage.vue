@@ -1,33 +1,7 @@
 <template>
   <div class="artistic-container">
-    <!-- 高级质感导航栏 -->
-    <header class="luxury-nav">
-      <div class="nav-brand" @mouseover="brandHover = true" @mouseleave="brandHover = false">
-        <div class="logo-container" :class="{'logo-hover': brandHover}">
-          <i class="el-icon-notebook-1 brand-icon"></i>
-        </div>
-        <span class="logo-text" style="font-size: 25px;">ShawnOJ</span>
-        <nav class="nav-links">
-          <a v-for="(link, index) in navLinks" 
-             :key="index" 
-             :class="['nav-item', { 'active': activeNav === index }]"
-             @click="activeNav = index">
-            {{ link }}
-          </a>
-        </nav>
-      </div>
-      <div class="user-menu">
-        <div class="avatar-container">
-          <el-badge :value="userStatus" class="avatar-badge">
-            <el-avatar 
-              :src="userInfo.avatar"
-              icon="el-icon-user" 
-              class="user-avatar"
-            />
-          </el-badge>
-        </div>
-      </div>
-    </header>
+    <!-- 使用导航栏组件 -->
+    <NavBar @nav-change="handleNavChange" />
 
     <!-- 艺术化主体 -->
     <main class="art-grid">
@@ -76,19 +50,14 @@
 </template>
 
 <script>
-import axios from 'axios'  // 新增axios引入
+import NavBar from './NavBar.vue'
 
 export default {
+  components: {
+    NavBar
+  },
   data() {
     return {
-      // 新增用户信息数据
-      userInfo: {
-        avatar: '' // 初始为空，将从后端获取
-      },
-      brandHover: false,
-      activeNav: 0,
-      navLinks: ['主页', '排行榜', '算法题库', '知识库'],
-      userStatus: 'online',
       creativeBtns: [
         { icon: 'el-icon-magic-stick', label: '智能生成', color: 'linear-gradient(45deg, #6a11cb, #2575fc)' },
         { icon: 'el-icon-cpu', label: '沙盒实验', color: 'linear-gradient(45deg, #2ebf91, #8360c3)' },
@@ -102,28 +71,10 @@ export default {
       ]
     }
   },
-  created() {
-    this.loadUserAvatar();
-  },
   methods: {
-    async loadUserAvatar() {
-      await axios.get('http://127.0.0.1:8088/shawnOJ/avatar', {  // 修改为直接使用axios
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
-        }
-      }).then(response => {
-        if (response.status === 200) {
-          this.userInfo.avatar = response.data.message;
-        } else {
-          this.setDefaultAvatar();
-        }
-      }).catch(() => {
-        this.setDefaultAvatar();
-      });
-    },
-    setDefaultAvatar() {
-      console.log('使用默认头像');
-      this.userInfo.avatar = require('@/assets/momo.png');
+    handleNavChange(index) {
+      console.log('当前导航索引:', index);
+      // 这里可以添加导航变化后的处理逻辑
     }
   }
 }
@@ -136,9 +87,8 @@ export default {
   padding: 2rem;
 }
 
-/* 新增main元素的上边距 */
 .art-grid {
-  margin-top: 40px;  /* 根据导航栏高度调整 */
+  margin-top: 40px;
 }
 
 .creation-card {
@@ -210,103 +160,5 @@ export default {
   height: 24px;
   border-radius: 6px;
   margin-right: 1rem;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.brand-icon {
-  animation: float 3s ease-in-out infinite;
-}
-</style>
-
-<style scoped>
-.luxury-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 5%;
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.logo-container {
-  display: flex;
-  padding: 8px;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-  border-radius: 12px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.logo-hover {
-  transform: rotate(15deg) scale(1.1);
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  margin-left: 40px;
-}
-
-.nav-item {
-  position: relative;
-  color: #2d3436;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 8px 0;
-  transition: color 0.3s ease;
-}
-
-.nav-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #6a11cb;
-  transition: width 0.3s ease;
-}
-
-.nav-item:hover::after {
-  width: 100%;
-}
-
-.nav-item.active {
-  color: #6a11cb;
-  font-weight: 600;
-}
-
-.user-avatar {
-  transition: transform 0.3s ease;
-}
-
-.user-avatar:hover {
-  transform: scale(1.1);
-}
-
-.avatar-badge ::v-deep .el-badge__content {
-  height: 18px;
-  padding: 0 4px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #67C23A;  /* 新增绿色背景 */
-  border: 2px solid white;
 }
 </style>

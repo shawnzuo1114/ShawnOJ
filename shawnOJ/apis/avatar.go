@@ -39,3 +39,20 @@ func GetAvatar(c *gin.Context) {
 		utils.ResponsesFail(c, "user is not exist")
 	}
 }
+
+func GetUserInfo(c *gin.Context) {
+	uname, _ := c.Get("username")
+	username := uname.(string)
+	flag := dao.IfUserExist(username)
+	if !flag {
+		utils.ResponsesFail(c, "user is not exist")
+	}
+	email, phone, status := dao.GetUserInfo(username)
+	c.JSON(200, gin.H{
+		"status":   200,
+		"username": username,
+		"email":    email,
+		"phone":    phone,
+		"state":    status,
+	})
+}

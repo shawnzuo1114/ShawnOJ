@@ -55,3 +55,15 @@ func CheckHashPassword(username string) string {
 	}
 	return passwordHash
 }
+
+func GetUserInfo(username string) (e string, p string, s string) {
+	sqlStr := "select email, phone, status from users where username = ?"
+	var email string
+	var phone string
+	var status string
+	err := utils.Db.QueryRow(sqlStr, username).Scan(&email, &phone, &status)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return email, phone, status
+}

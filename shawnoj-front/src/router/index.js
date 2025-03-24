@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '../components/LoginPage.vue'
 import RegisterPage from '../components/RegisterPage.vue'
 import HomePage from '../components/HomePage.vue'
+import UserInfoPage from '@/components/UserInfoPage.vue'
 
 const routes = [
     {
@@ -22,6 +23,11 @@ const routes = [
         path: '/home',
         name: 'Home',       // 添加路由名称
         component: HomePage
+    },
+    {
+        path: '/info',
+        name: 'Info',      // 添加路由名称
+        component: UserInfoPage
     }
 ]
 
