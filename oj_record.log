@@ -1,0 +1,33 @@
+{"level":"INFO","time":"2025-11-22T18:15:17.012+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-22T18:15:35.441+0800","caller":"logger/logger.go:69","msg":"/","status":200,"method":"GET","path":"/","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0","errors":"","cost":0.0004948}
+{"level":"INFO","time":"2025-11-22T18:15:35.575+0800","caller":"logger/logger.go:69","msg":"/favicon.ico","status":404,"method":"GET","path":"/favicon.ico","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0","errors":"","cost":0}
+{"level":"INFO","time":"2025-11-22T18:15:43.392+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-22T18:15:43.392+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-22T19:37:09.837+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-22T19:37:25.374+0800","caller":"logger/logger.go:69","msg":"/api/v1/gate/user/register","status":404,"method":"POST","path":"/api/v1/gate/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"INFO","time":"2025-11-22T19:38:02.254+0800","caller":"logger/logger.go:69","msg":"/api/v1/user/register","status":200,"method":"POST","path":"/api/v1/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"ERROR","time":"2025-11-22T19:38:09.362+0800","caller":"api/user.go:25","msg":"两次密码不一致"}
+{"level":"INFO","time":"2025-11-22T19:38:09.362+0800","caller":"logger/logger.go:69","msg":"/api/v1/user/register","status":200,"method":"POST","path":"/api/v1/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"ERROR","time":"2025-11-22T19:38:14.117+0800","caller":"api/user.go:32","msg":"密码错误：","error":"密码无效"}
+{"level":"INFO","time":"2025-11-22T19:38:14.117+0800","caller":"logger/logger.go:69","msg":"/api/v1/user/register","status":200,"method":"POST","path":"/api/v1/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"INFO","time":"2025-11-22T19:38:30.375+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-22T19:38:30.375+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-22T21:49:10.057+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"ERROR","time":"2025-11-22T21:49:33.431+0800","caller":"api/user.go:47","msg":"系统错误：","error":"Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', username, password into user where userid = ?, username= ?, password = ?' at line 1"}
+{"level":"INFO","time":"2025-11-22T21:49:33.432+0800","caller":"logger/logger.go:69","msg":"/api/v1/user/register","status":200,"method":"POST","path":"/api/v1/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.1053806}
+{"level":"INFO","time":"2025-11-22T21:50:13.317+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-22T21:50:13.318+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-22T21:51:07.945+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"ERROR","time":"2025-11-22T21:51:10.943+0800","caller":"api/user.go:47","msg":"系统错误：","error":"Error 1054 (42S22): Unknown column 'user_id' in 'field list'"}
+{"level":"INFO","time":"2025-11-22T21:51:10.943+0800","caller":"logger/logger.go:69","msg":"/api/v1/user/register","status":200,"method":"POST","path":"/api/v1/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.070527}
+{"level":"INFO","time":"2025-11-22T21:51:49.560+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-22T21:51:49.561+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-22T21:51:55.880+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"ERROR","time":"2025-11-22T21:51:58.835+0800","caller":"api/user.go:47","msg":"系统错误：","error":"Error 1264 (22003): Out of range value for column 'userid' at row 1"}
+{"level":"INFO","time":"2025-11-22T21:51:58.836+0800","caller":"logger/logger.go:69","msg":"/api/v1/user/register","status":200,"method":"POST","path":"/api/v1/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0786159}
+{"level":"INFO","time":"2025-11-22T21:54:47.888+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-22T21:54:47.889+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-22T21:54:52.012+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-22T21:54:53.766+0800","caller":"logger/logger.go:69","msg":"/api/v1/user/register","status":200,"method":"POST","path":"/api/v1/user/register","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0771343}
+{"level":"INFO","time":"2025-11-22T21:56:50.464+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-22T21:56:50.464+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
