@@ -26,9 +26,16 @@ func Setup(mode string) *gin.Engine {
 		})
 	})
 
-	apiGroup := r.Group("/api/v1")
+	apiGroup1 := r.Group("/api1/v1")
 
-	apiGroup.POST("user/register", api.UserRegisterHandler)
+	apiGroup1.POST("user/register", api.UserRegisterHandler)
+	apiGroup1.GET("user/login", api.UserLoginHandler)
+
+	apiGroup2 := r.Group("/api2/v1")
+	apiGroup2.Use(middleware.JWTAuthMiddleware())
+	apiGroup2.GET("user/me", api.UserInfoHandler)
+	apiGroup2.POST("user/password", api.UserPasswordHandler)
+	apiGroup2.POST("user/logout", api.UserLogoutHandler)
 
 	return r
 }
