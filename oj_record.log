@@ -163,3 +163,68 @@
 {"level":"INFO","time":"2025-11-23T20:45:45.563+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/me","status":200,"method":"GET","path":"/api2/v1/user/me","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0033057}
 {"level":"INFO","time":"2025-11-23T21:05:04.875+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2025-11-23T21:05:04.875+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T19:32:28.015+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-24T19:32:29.833+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/me","status":200,"method":"GET","path":"/api2/v1/user/me","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"INFO","time":"2025-11-24T19:32:33.839+0800","caller":"logger/logger.go:69","msg":"/api1/v1/user/login","status":200,"method":"GET","path":"/api1/v1/user/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.1359236}
+{"level":"ERROR","time":"2025-11-24T19:32:53.155+0800","caller":"api/user.go:96","msg":"信息获取失败：","error":"sql: Scan error on column index 6, name \"email\": converting NULL to string is unsupported"}
+{"level":"INFO","time":"2025-11-24T19:32:53.155+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/me","status":200,"method":"GET","path":"/api2/v1/user/me","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0025661}
+{"level":"ERROR","time":"2025-11-24T19:33:01.356+0800","caller":"api/user.go:96","msg":"信息获取失败：","error":"sql: Scan error on column index 6, name \"email\": converting NULL to string is unsupported"}
+{"level":"INFO","time":"2025-11-24T19:33:01.356+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/me","status":200,"method":"GET","path":"/api2/v1/user/me","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0030553}
+{"level":"INFO","time":"2025-11-24T19:34:01.795+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-24T19:34:01.796+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T19:36:51.861+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-24T19:37:06.197+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/me","status":200,"method":"GET","path":"/api2/v1/user/me","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0033437}
+{"level":"INFO","time":"2025-11-24T19:37:46.681+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":404,"method":"GET","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"ERROR","time":"2025-11-24T19:38:06.236+0800","caller":"api/user.go:146","msg":"邮箱格式错误：","error":"邮箱无效"}
+{"level":"INFO","time":"2025-11-24T19:38:06.236+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"INFO","time":"2025-11-24T19:38:32.441+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":1.9904584}
+{"level":"INFO","time":"2025-11-24T19:41:20.794+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-24T19:41:20.794+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T19:41:26.993+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"ERROR","time":"2025-11-24T19:41:40.379+0800","caller":"api/user.go:152","msg":"系统错误：","error":"dial tcp: lookup smtp.163.com: i/o timeout"}
+{"level":"INFO","time":"2025-11-24T19:41:40.379+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":10.0011078}
+{"level":"INFO","time":"2025-11-24T19:42:25.658+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":1.2047485}
+{"level":"INFO","time":"2025-11-24T19:43:10.810+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.9261573}
+{"level":"INFO","time":"2025-11-24T19:59:34.488+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-24T19:59:34.497+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T21:34:36.877+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-24T21:34:52.112+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"INFO","time":"2025-11-24T21:34:56.428+0800","caller":"logger/logger.go:69","msg":"/api1/v1/user/login","status":200,"method":"GET","path":"/api1/v1/user/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.1054555}
+{"level":"INFO","time":"2025-11-24T21:35:10.860+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.7570816}
+{"level":"ERROR","time":"2025-11-24T21:35:20.421+0800","caller":"api/user.go:152","msg":"系统错误：","error":"verify code exists"}
+{"level":"INFO","time":"2025-11-24T21:35:20.421+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0014183}
+{"level":"INFO","time":"2025-11-24T21:40:33.375+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.5825565}
+{"level":"INFO","time":"2025-11-24T21:44:27.210+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-24T21:44:27.210+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T21:44:34.586+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"ERROR","time":"2025-11-24T21:45:35.160+0800","caller":"api/user.go:152","msg":"系统错误：","error":"dial tcp: lookup smtp.163.com: i/o timeout"}
+{"level":"INFO","time":"2025-11-24T21:45:35.160+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":10.0026397}
+{"level":"ERROR","time":"2025-11-24T21:45:53.252+0800","caller":"api/user.go:152","msg":"系统错误：","error":"dial tcp: lookup smtp.163.com: i/o timeout"}
+{"level":"INFO","time":"2025-11-24T21:45:53.252+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":10.0008755}
+{"level":"ERROR","time":"2025-11-24T21:46:22.750+0800","caller":"api/user.go:152","msg":"系统错误：","error":"dial tcp: lookup smtp.163.com: i/o timeout"}
+{"level":"INFO","time":"2025-11-24T21:46:22.750+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":10.001656}
+{"level":"INFO","time":"2025-11-24T21:47:23.471+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"ERROR","time":"2025-11-24T21:47:27.710+0800","caller":"api/user.go:152","msg":"系统错误：","error":"dial tcp: lookup smtp.163.com: i/o timeout"}
+{"level":"INFO","time":"2025-11-24T21:47:27.710+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":10.0013187}
+{"level":"INFO","time":"2025-11-24T21:47:28.210+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T21:47:37.338+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-24T21:48:02.156+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":1.1387168}
+{"level":"INFO","time":"2025-11-24T22:25:43.273+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-24T22:25:43.274+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T22:41:16.227+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"INFO","time":"2025-11-24T22:41:24.583+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.7918775}
+{"level":"ERROR","time":"2025-11-24T22:42:06.431+0800","caller":"api/user.go:166","msg":"email不存在"}
+{"level":"INFO","time":"2025-11-24T22:42:06.431+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/verify","status":200,"method":"GET","path":"/api2/v1/user/verify","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"ERROR","time":"2025-11-24T22:42:51.186+0800","caller":"api/user.go:166","msg":"email不存在"}
+{"level":"INFO","time":"2025-11-24T22:42:51.186+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/verify","status":200,"method":"GET","path":"/api2/v1/user/verify","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0}
+{"level":"INFO","time":"2025-11-24T22:46:08.126+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-24T22:46:08.126+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}
+{"level":"INFO","time":"2025-11-24T22:46:15.006+0800","caller":"database/mysql.go:30","msg":"MySQL connection established successfully"}
+{"level":"ERROR","time":"2025-11-24T22:46:31.128+0800","caller":"api/user.go:170","msg":"系统错误：","error":"redis: nil"}
+{"level":"INFO","time":"2025-11-24T22:46:31.128+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/verify","status":200,"method":"GET","path":"/api2/v1/user/verify","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0013736}
+{"level":"INFO","time":"2025-11-24T22:46:50.952+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/captcha","status":200,"method":"POST","path":"/api2/v1/user/captcha","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":1.7949626}
+{"level":"ERROR","time":"2025-11-24T22:47:00.126+0800","caller":"api/user.go:166","msg":"验证码错误：","error":"verify code was wrong"}
+{"level":"INFO","time":"2025-11-24T22:47:00.126+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/verify","status":200,"method":"GET","path":"/api2/v1/user/verify","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0012484}
+{"level":"INFO","time":"2025-11-24T22:47:09.787+0800","caller":"logger/logger.go:69","msg":"/api2/v1/user/verify","status":200,"method":"GET","path":"/api2/v1/user/verify","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.49.1","errors":"","cost":0.0022818}
+{"level":"INFO","time":"2025-11-24T22:47:49.767+0800","caller":"ShawnOJ/main.go:48","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2025-11-24T22:47:49.768+0800","caller":"ShawnOJ/main.go:60","msg":"Server exiting"}

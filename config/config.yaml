@@ -3,7 +3,7 @@ mode: "dev"
 host: "127.0.0.1"
 port: 8081
 version: "v0.0.1"
-start_time: "2025-11-01"
+start_time: "2025-11-22"
 machine_id: 1
 log:
   level: "debug"
@@ -25,3 +25,6 @@ redis:
   db: 0
   password: ""
   pool_size: 100
+email:
+  sender: "shawnoj@163.com"
+  password: "PYnPughduzb6Nric"

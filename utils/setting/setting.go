@@ -21,6 +21,7 @@ type AppConfig struct {
 	*LogConfig   `mapstructure:"log"`
 	*MysqlConfig `mapstructure:"mysql"`
 	*RedisConfig `mapstructure:"redis"`
+	*EmailConfig `mapstructure:"email"`
 }
 
 type LogConfig struct {
@@ -47,6 +48,11 @@ type RedisConfig struct {
 	Port     int    `mapstructure:"port"`
 	DB       int    `mapstructure:"db"`
 	PoolSize int    `mapstructure:"pool_size"`
+}
+
+type EmailConfig struct {
+	Sender   string `mapstructure:"sender"`
+	Password string `mapstructure:"password"`
 }
 
 func Init() (err error) {

@@ -1,13 +1,18 @@
 package service
 
 import (
+	"ShawnOJ/internal"
 	"ShawnOJ/internal/api/params"
 	"ShawnOJ/internal/dao"
 	"ShawnOJ/internal/models"
 	"ShawnOJ/utils/bcrypt"
 	"ShawnOJ/utils/jwt"
+	"ShawnOJ/utils/mail"
 	"ShawnOJ/utils/snowflake"
 	"fmt"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
 )
 
 func UserRegisterService(rp params.RegisterParam) (err error) {
@@ -91,5 +96,41 @@ func UserPasswordService(pp *params.PasswordParam) (err error) {
 
 func UserLogoutService(token string) (err error) {
 	fmt.Println(token)
+	return nil
+}
+
+func UserCaptchaService(email string, c *gin.Context) (err error) {
+	flag, err := dao.GetCodeTTL(email, c)
+	if err != nil {
+		return
+	}
+	if flag {
+		return internal.ErrVerifyExists
+	}
+
+	code, err := mail.SendVerifyCode(email)
+	if err != nil {
+		return
+	}
+
+	if err = dao.SetVerifyCode(email, code, c); err != nil {
+		return
+	}
+
+	return
+}
+
+func UserVerifyService(email string, code int, c *gin.Context) (err error) {
+	value, err := dao.GetVerifyCode(email, c)
+	if err != nil {
+		return
+	}
+	rCode, _ := strconv.Atoi(value)
+	if rCode != code {
+		return internal.ErrVerifyCodeWrong
+	}
+	if err = dao.DeleteVerifyCode(email, c); err != nil {
+		return
+	}
 	return nil
 }

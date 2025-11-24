@@ -14,6 +14,8 @@ const (
 	CodeInvalidAuth
 	CodeNeedLogin
 	CodeInvalidID
+	CodeInvalidEmail
+	CodeInvalidVerify
 )
 
 var codeMsgMap = map[ResCode]string{
@@ -27,6 +29,8 @@ var codeMsgMap = map[ResCode]string{
 	CodeInvalidAuth:     "无效的token",
 	CodeNeedLogin:       "需要登陆",
 	CodeInvalidID:       "ID错误",
+	CodeInvalidEmail:    "邮箱格式错误",
+	CodeInvalidVerify:   "验证码错误",
 }
 
 func (c ResCode) Msg() string {

@@ -8,6 +8,7 @@ import (
 	"ShawnOJ/utils/jwt"
 	"ShawnOJ/utils/regexp"
 	"errors"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -138,4 +139,37 @@ func UserLogoutHandler(c *gin.Context) {
 		return
 	}
 	return
+}
+
+func UserCaptchaHandler(c *gin.Context) {
+	email := c.PostForm("email")
+	if err := utils.Match(utils.EmailPattern, email); err != nil {
+		zap.L().Error("邮箱格式错误：", zap.Error(err))
+		responses.ResponseError(c, responses.CodeInvalidEmail)
+		return
+	}
+
+	if err := service.UserCaptchaService(email, c); err != nil {
+		zap.L().Error("系统错误：", zap.Error(err))
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+	responses.ResponseSuccess(c, nil)
+}
+
+func UserVerifyHandler(c *gin.Context) {
+	code := c.PostForm("code")
+	email := c.PostForm("email")
+	VerifyCode, _ := strconv.Atoi(code)
+	if err := service.UserVerifyService(email, VerifyCode, c); err != nil {
+		if errors.Is(err, internal.ErrVerifyCodeWrong) {
+			zap.L().Error("验证码错误：", zap.Error(err))
+			responses.ResponseError(c, responses.CodeInvalidVerify)
+			return
+		}
+		zap.L().Error("系统错误：", zap.Error(err))
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+	responses.ResponseSuccess(c, nil)
 }

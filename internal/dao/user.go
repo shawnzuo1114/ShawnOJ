@@ -4,7 +4,12 @@ import (
 	"ShawnOJ/internal"
 	"ShawnOJ/internal/models"
 	"ShawnOJ/utils/database"
+	"time"
+
+	"github.com/gin-gonic/gin"
 )
+
+const duration = 5 * time.Minute
 
 func CheckUser(username string) (err error) {
 	sqlStr := "select count(username) from user where username = ?"
@@ -68,4 +73,32 @@ func UpdatePassword(user *models.User) (err error) {
 		return
 	}
 	return nil
+}
+
+func GetCodeTTL(email string, ctx *gin.Context) (flag bool, err error) {
+	c := ctx.Request.Context()
+	key := "email:verify:code:" + email
+	ttl, err := database.Rdb.TTL(c, key).Result()
+	if err != nil {
+		return false, err
+	}
+	return ttl > 0, nil
+}
+
+func SetVerifyCode(email string, code int, ctx *gin.Context) (err error) {
+	c := ctx.Request.Context()
+	key := "email:verify:code:" + email
+	return database.Rdb.Set(c, key, code, duration).Err()
+}
+
+func GetVerifyCode(email string, ctx *gin.Context) (value string, err error) {
+	c := ctx.Request.Context()
+	key := "email:verify:code:" + email
+	return database.Rdb.Get(c, key).Result()
+}
+
+func DeleteVerifyCode(email string, ctx *gin.Context) (err error) {
+	c := ctx.Request.Context()
+	key := "email:verify:code:" + email
+	return database.Rdb.Del(c, key).Err()
 }

@@ -36,6 +36,8 @@ func Setup(mode string) *gin.Engine {
 	apiGroup2.GET("user/me", api.UserInfoHandler)
 	apiGroup2.POST("user/password", api.UserPasswordHandler)
 	apiGroup2.POST("user/logout", api.UserLogoutHandler)
+	apiGroup2.POST("user/captcha", api.UserCaptchaHandler)
+	apiGroup2.GET("user/verify", api.UserVerifyHandler)
 
 	return r
 }
