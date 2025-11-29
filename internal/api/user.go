@@ -133,12 +133,12 @@ func UserLogoutHandler(c *gin.Context) {
 		responses.ResponseError(c, responses.CodeInvalidAuth)
 		return
 	}
-	if err := service.UserLogoutService(token.(string)); err != nil {
+	if err := service.UserLogoutService(token.(string), c); err != nil {
 		zap.L().Error("逻辑错误：", zap.Error(err))
 		responses.ResponseError(c, responses.CodeServerBusy)
 		return
 	}
-	return
+	responses.ResponseSuccess(c, nil)
 }
 
 func UserCaptchaHandler(c *gin.Context) {

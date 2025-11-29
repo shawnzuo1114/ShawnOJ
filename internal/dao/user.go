@@ -43,8 +43,8 @@ func InsertUser(u *models.User) (err error) {
 	return nil
 }
 
-func SelectUserPassword(user *models.User) (password string, err error) {
-	sqlStr := "select username, userid, password from user where username = ?"
+func SelectUserInfo(user *models.User) (password string, err error) {
+	sqlStr := "select username, userid, password, role from user where username = ?"
 	if err = database.Db.Get(user, sqlStr, user.Username); err != nil {
 		return
 	}
@@ -101,4 +101,26 @@ func DeleteVerifyCode(email string, ctx *gin.Context) (err error) {
 	c := ctx.Request.Context()
 	key := "email:verify:code:" + email
 	return database.Rdb.Del(c, key).Err()
+}
+
+func CreateEmail(email string, userid int64) (err error) {
+	sqlStr := "UPDATE `user` SET email = ? WHERE userid = ?;"
+	if _, err = database.Db.Exec(sqlStr, email, userid); err != nil {
+		return
+	}
+	return nil
+}
+
+func AddTokenBlacklist(token string, expireTime time.Duration, ctx *gin.Context) (err error) {
+	c := ctx.Request.Context()
+	key := "blacklist:token:" + token
+	return database.Rdb.Set(c, key, "1", duration).Err()
+}
+
+func IsTokenInBlacklist(token string, c *gin.Context) (bool, error) {
+	exists, err := database.Rdb.Exists(c, "blacklist:token:"+token).Result()
+	if err != nil {
+		return false, err
+	}
+	return exists > 0, nil
 }

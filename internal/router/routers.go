@@ -32,12 +32,18 @@ func Setup(mode string) *gin.Engine {
 	apiGroup1.GET("user/login", api.UserLoginHandler)
 
 	apiGroup2 := r.Group("/api2/v1")
-	apiGroup2.Use(middleware.JWTAuthMiddleware())
-	apiGroup2.GET("user/me", api.UserInfoHandler)
-	apiGroup2.POST("user/password", api.UserPasswordHandler)
-	apiGroup2.POST("user/logout", api.UserLogoutHandler)
-	apiGroup2.POST("user/captcha", api.UserCaptchaHandler)
-	apiGroup2.GET("user/verify", api.UserVerifyHandler)
+	userGroup := apiGroup2.Group("user")
+	userGroup.Use(middleware.JWTAuthMiddleware())
+	userGroup.GET("me", api.UserInfoHandler)
+	userGroup.POST("password", api.UserPasswordHandler)
+	userGroup.POST("logout", api.UserLogoutHandler)
+	userGroup.POST("captcha", api.UserCaptchaHandler)
+	userGroup.GET("verify", api.UserVerifyHandler)
+
+	adminGroup := apiGroup2.Group("admin")
+	adminGroup.Use(middleware.JWTAuthMiddleware())
+	adminGroup.Use(middleware.JWTAdminAuthMiddleware())
+	adminGroup.POST("/problem", api.UserInfoHandler)
 
 	return r
 }

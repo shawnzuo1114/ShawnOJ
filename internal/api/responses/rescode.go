@@ -16,6 +16,7 @@ const (
 	CodeInvalidID
 	CodeInvalidEmail
 	CodeInvalidVerify
+	CodeNotAdmin
 )
 
 var codeMsgMap = map[ResCode]string{
@@ -31,6 +32,7 @@ var codeMsgMap = map[ResCode]string{
 	CodeInvalidID:       "ID错误",
 	CodeInvalidEmail:    "邮箱格式错误",
 	CodeInvalidVerify:   "验证码错误",
+	CodeNotAdmin:        "不是管理员",
 }
 
 func (c ResCode) Msg() string {

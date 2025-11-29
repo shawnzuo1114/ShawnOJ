@@ -1,6 +1,7 @@
 package jwt
 
 import (
+	"ShawnOJ/internal"
 	"errors"
 	"fmt"
 	"time"
@@ -16,13 +17,15 @@ var mySecret = []byte("shawnzuo")
 type MyClaims struct {
 	UserID   int64  `json:"userid"`
 	Username string `json:"username"`
+	Role     string `json:"role"`
 	jwt.StandardClaims
 }
 
-func GenToken(userID int64, username string) (string, error) {
+func GenToken(userID int64, username string, role string) (string, error) {
 	c := MyClaims{
 		userID,
 		username,
+		role,
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(TokenExpireDuration).Unix(),
 			Issuer:    "shawnoj",
@@ -59,4 +62,20 @@ func GetUserID(c *gin.Context) (int64, error) {
 	default:
 		return 0, fmt.Errorf("invalid userid type: %T", val)
 	}
+}
+
+func GetRemainingExpireTime(token string) (time.Duration, error) {
+	claims, err := ParseToken(token)
+	if err != nil {
+		return 0, err
+	}
+
+	expireTimestamp := claims.ExpiresAt
+	expireTime := time.Unix(expireTimestamp, 0)
+	now := time.Now()
+	remaining := expireTime.Sub(now)
+	if remaining < 0 {
+		return 0, internal.ErrTokenExpired
+	}
+	return remaining, nil
 }

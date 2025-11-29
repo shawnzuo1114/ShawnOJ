@@ -7,4 +7,5 @@ var (
 	ErrUserNotExists   = errors.New("user does not exist")
 	ErrVerifyExists    = errors.New("verify code exists")
 	ErrVerifyCodeWrong = errors.New("verify code was wrong")
+	ErrTokenExpired    = errors.New("token expired")
 )

@@ -44,7 +44,7 @@ func UserLoginService(lp params.LoginParam) (token string, err error) {
 	if err = dao.QueryUser(user.Username); err != nil {
 		return
 	}
-	hashPassword, err := dao.SelectUserPassword(user)
+	hashPassword, err := dao.SelectUserInfo(user)
 	if err != nil {
 		return "", err
 	}
@@ -52,7 +52,7 @@ func UserLoginService(lp params.LoginParam) (token string, err error) {
 	if err != nil {
 		return
 	}
-	token, err = jwt.GenToken(user.UserID, user.Username)
+	token, err = jwt.GenToken(user.UserID, user.Username, user.Role)
 	return token, err
 }
 
@@ -94,8 +94,18 @@ func UserPasswordService(pp *params.PasswordParam) (err error) {
 	return
 }
 
-func UserLogoutService(token string) (err error) {
-	fmt.Println(token)
+func UserLogoutService(token string, c *gin.Context) (err error) {
+	_, err = jwt.ParseToken(token)
+	if err != nil {
+		return
+	}
+	time, err := jwt.GetRemainingExpireTime(token)
+	if err != nil {
+		return
+	}
+	if err = dao.AddTokenBlacklist(token, time, c); err != nil {
+		return
+	}
 	return nil
 }
 
@@ -130,6 +140,19 @@ func UserVerifyService(email string, code int, c *gin.Context) (err error) {
 		return internal.ErrVerifyCodeWrong
 	}
 	if err = dao.DeleteVerifyCode(email, c); err != nil {
+		return
+	}
+	uid, ok := c.Get("userid")
+	if !ok {
+		return internal.ErrUserNotExists
+	}
+	userid, ok := uid.(int64)
+	if !ok {
+		return internal.ErrUserNotExists
+	}
+	fmt.Println(userid)
+	fmt.Println(email)
+	if err = dao.CreateEmail(email, userid); err != nil {
 		return
 	}
 	return nil
