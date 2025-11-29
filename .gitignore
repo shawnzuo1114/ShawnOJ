@@ -18,6 +18,7 @@ coverage.*
 *.coverprofile
 profile.cov
 config.yaml
+oj_record.log
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
