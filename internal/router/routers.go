@@ -40,10 +40,15 @@ func Setup(mode string) *gin.Engine {
 	userGroup.POST("captcha", api.UserCaptchaHandler)
 	userGroup.GET("verify", api.UserVerifyHandler)
 
+	normalGroup := apiGroup2.Group("normal")
+	normalGroup.Use(middleware.JWTAuthMiddleware())
+	normalGroup.GET("/problems/:id", api.NormalGetProblemByIdHandler)
+	normalGroup.GET("/problems/slug/:slug", api.NormalGetProblemBySlugHandler)
+
 	adminGroup := apiGroup2.Group("admin")
 	adminGroup.Use(middleware.JWTAuthMiddleware())
 	adminGroup.Use(middleware.JWTAdminAuthMiddleware())
-	adminGroup.POST("/problem", api.UserInfoHandler)
+	adminGroup.POST("/problems", api.AdminProblemSetHandler)
 
 	return r
 }
