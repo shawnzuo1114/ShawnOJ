@@ -9,4 +9,5 @@ var (
 	ErrVerifyCodeWrong  = errors.New("verify code was wrong")
 	ErrTokenExpired     = errors.New("token expired")
 	ErrPermissionDenied = errors.New("permission denied")
+	ErrParamWrong       = errors.New("wrong param")
 )

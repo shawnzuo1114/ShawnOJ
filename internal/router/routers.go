@@ -44,11 +44,13 @@ func Setup(mode string) *gin.Engine {
 	normalGroup.Use(middleware.JWTAuthMiddleware())
 	normalGroup.GET("/problems/:id", api.NormalGetProblemByIdHandler)
 	normalGroup.GET("/problems/slug/:slug", api.NormalGetProblemBySlugHandler)
+	normalGroup.GET("/problems/list/:difficulty", api.NormalGetProblemListHandler)
 
 	adminGroup := apiGroup2.Group("admin")
 	adminGroup.Use(middleware.JWTAuthMiddleware())
 	adminGroup.Use(middleware.JWTAdminAuthMiddleware())
 	adminGroup.POST("/problems", api.AdminProblemSetHandler)
+	adminGroup.PUT("/problems/:id", api.AdminProblemUpdateHandler)
 
 	return r
 }

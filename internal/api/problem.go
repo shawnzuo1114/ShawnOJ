@@ -37,6 +37,15 @@ func AdminProblemSetHandler(c *gin.Context) {
 	responses.ResponseSuccess(c, nil)
 }
 
+func AdminProblemUpdateHandler(c *gin.Context) {
+	var ProblemSetParam params.AdminProblemSetParam
+	if err := c.ShouldBind(&ProblemSetParam); err != nil {
+		zap.L().Error("参数绑定错误：", zap.Error(err))
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+}
+
 func NormalGetProblemByIdHandler(c *gin.Context) {
 	idStr := c.Param("id")
 	id, err := strconv.ParseInt(idStr, 10, 64)
@@ -91,4 +100,45 @@ func NormalGetProblemBySlugHandler(c *gin.Context) {
 	}
 
 	responses.ResponseSuccess(c, info)
+}
+
+func NormalGetProblemListHandler(c *gin.Context) {
+	pageStr := c.DefaultQuery("page", "1")
+	page, err := strconv.ParseInt(pageStr, 10, 64)
+	if err != nil {
+		zap.L().Error("参数错误", zap.Error(err))
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+	sizeStr := c.DefaultQuery("size", "5")
+	size, err := strconv.ParseInt(sizeStr, 10, 64)
+	if err != nil {
+		zap.L().Error("参数错误", zap.Error(err))
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+
+	roleStr, ok := c.Get("role")
+	if !ok {
+		zap.L().Error("无法获取用户身份")
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+	role := roleStr.(string)
+	difficultyStr := c.Param("difficulty")
+	difficulty, err := strconv.ParseInt(difficultyStr, 10, 64)
+	if difficulty > 3 || difficulty < 0 {
+		zap.L().Error("参数错误", zap.Error(err))
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+
+	problemList, err := service.NormalGetProblemListService(role, page, size, difficulty)
+	if err != nil {
+		zap.L().Error("获取失败", zap.Error(err))
+		responses.ResponseError(c, responses.CodeServerBusy)
+		return
+	}
+
+	responses.ResponseSuccess(c, problemList)
 }
